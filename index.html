@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Professional certificates portfolio" />
+  <meta name="author" content="Merve Altınışık" />
+  <title>Certificates Portfolio</title>
+
+  <!-- Bootstrap 5 CSS CDN -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+    /* GENEL */
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+        Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color: #faf9f6;
+      color: #2c2c2c;
+      transition: background-color 0.4s ease, color 0.4s ease;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    header, footer {
+      padding: 2rem 1rem;
+      flex-shrink: 0;
+      text-align: center;
+      user-select: none;
+    }
+
+    header {
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      background-color: transparent;
+    }
+
+    header h1 {
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-size: 2rem;
+      margin-bottom: 0.7rem;
+      color: #1a2a6c;
+    }
+
+    footer {
+      border-top: 1px solid rgba(0,0,0,0.1);
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: auto;
+      background-color: transparent;
+    }
+
+    /* Toggle buton */
+    .toggle-btn {
+      cursor: pointer;
+      user-select: none;
+      border-radius: 50px;
+      padding: 0.4rem 1.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #555;
+      border: 1.8px solid #999;
+      background-color: transparent;
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      margin: 0 auto;
+      display: inline-block;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      user-select: none;
+      outline-offset: 3px;
+    }
+    .toggle-btn:hover,
+    .toggle-btn:focus {
+      color: #222;
+      border-color: #555;
+      background-color: #eee;
+      outline: none;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+    }
+
+    /* MAIN CONTAINER */
+    main.container {
+      max-width: 900px;
+      flex-grow: 1;
+      padding: 2.5rem 1.5rem;
+    }
+
+    /* SERTIFIKA KARTLARI GRID */
+    #certificatesList {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 1.8rem 1.8rem;
+    }
+
+    /* KARTLAR */
+    .card {
+      padding: 1rem 1.5rem;
+      border-radius: 1rem;
+      background: rgba(255 255 255 / 0.9);
+      box-shadow: 0 8px 32px rgb(31 38 135 / 0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255 255 255 / 0.3);
+      transition: box-shadow 0.3s ease, transform 0.25s ease;
+      color: #1b1b1b;
+      cursor: default;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 160px;
+    }
+    .card:hover,
+    .card:focus-within {
+      box-shadow: 0 12px 48px rgb(31 38 135 / 0.18);
+      transform: translateY(-3px);
+      outline: none;
+    }
+
+    /* Kart başlığı */
+    .card h2 {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+      color: #0b1a58;
+      line-height: 1.3;
+      user-select: text;
+    }
+
+    /* Veren kuruluş */
+    .card p.issuer {
+      font-style: italic;
+      color: #666;
+      font-size: 0.88rem;
+      margin-bottom: 0.4rem;
+      user-select: text;
+    }
+
+    /* Genel paragraf */
+    .card p {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 0.3rem;
+      user-select: text;
+      line-height: 1.2;
+    }
+
+    /* Link */
+    a {
+      color: #1a2a6c;
+      text-decoration: underline;
+      word-break: break-word;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.25s ease;
+      user-select: text;
+    }
+    a:hover,
+    a:focus {
+      color: #0a58ca;
+      text-decoration: none;
+      outline-offset: 3px;
+    }
+
+    /* Küçük yazılar */
+    .small-text {
+      font-size: 0.8rem;
+      color: #888;
+      user-select: text;
+    }
+
+    /* Koyu mod */
+    body.dark-mode {
+  background-color: #1e1e2f; 
+  color: #d0d0d0; 
+}
+
+body.dark-mode header h1 {
+  color: #f0f0f0; 
+}
+
+body.dark-mode footer {
+  color: #999999; 
+  border-top-color: rgba(255 255 255 / 0.12);
+}
+
+body.dark-mode header {
+  border-bottom-color: rgba(255 255 255 / 0.12);
+}
+
+body.dark-mode .card {
+  background: rgba(40 40 55 / 0.75); 
+  box-shadow: 0 8px 32px rgb(255 255 255 / 0.08);
+  border: 1px solid rgba(255 255 255 / 0.10);
+  color: #e0e0e0;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+body.dark-mode .card:hover,
+body.dark-mode .card:focus-within {
+      box-shadow: 0 12px 48px rgb(255 255 255 / 0.15);
+   transform: translateY(-3px);
+}
+
+body.dark-mode .card h2 {
+  position: relative;
+  color: #f5f5f5;
+  padding: 0.15rem 0.6rem;
+  border-radius: 0.5rem;
+  background: rgba(255 255 255 / 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+body.dark-mode .card p,
+body.dark-mode .card p.issuer {
+  color: #bbb;
+}
+
+body.dark-mode a {
+  color: #82b1ff; 
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode a:hover,
+body.dark-mode a:focus {
+  color: #a9c9ff;
+  text-decoration: underline;
+}
+
+body.dark-mode .toggle-btn {
+  color: #c0c0c0;
+  border-color: #666;
+  background-color: transparent;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.25);
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .toggle-btn:hover,
+body.dark-mode .toggle-btn:focus {
+  color: #f0f0f0;
+  border-color: #82b1ff;
+  background-color: rgba(50 60 90 / 0.7);
+  box-shadow: 0 4px 14px rgb(130 177 255 / 0.7);
+}
+
+
+    /* Responsive */
+    @media (max-width: 767.98px) {
+      main.container {
+        max-width: 100%;
+        padding: 1.5rem 1rem;
+      }
+      #certificatesList {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .card {
+        height: auto;
+        padding: 1.3rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 479.98px) {
+      header h1 {
+        font-size: 1.6rem;
+      }
+      .toggle-btn {
+        font-size: 0.9rem;
+        padding: 0.35rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CERTIFICATES</h1>
+<button
+  id="modeToggle"
+  class="toggle-btn"
+  aria-label="Toggle light and dark mode"
+  title="Toggle light and dark mode"
+  style="
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    overflow-x: auto;      /* Yatayda scroll */
+    white-space: nowrap;   /* İçerik tek satırda */
+    padding: 8px;
+    max-width: 150px;      /* Genişlik sınırı */
+    scrollbar-width: thin; /* Firefox için ince scrollbar */
+  "
+>
+  <!-- Güneş ikonu -->
+  <svg
+    id="sunIcon"
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    fill="currentColor"
+    viewBox="0 0 16 16"
+    style="display: inline-block;"
+  >
+    <path
+      d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"
+    />
+    <path
+      d="M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zM8 13.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2a.5.5 0 0 1 .5-.5zM3.354 2.646a.5.5 0 0 1 .708 0l1.414 1.414a.5.5 0 0 1-.708.708L3.354 3.354a.5.5 0 0 1 0-.708zM12.536 11.828a.5.5 0 0 1 .708 0l1.414 1.414a.5.5 0 0 1-.708.708l-1.414-1.414a.5.5 0 0 1 0-.708zM0 8a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 0 8zm13.5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zM3.354 13.354a.5.5 0 1 1-.708-.708l1.414-1.414a.5.5 0 1 1 .708.708l-1.414 1.414zM12.536 4.172a.5.5 0 0 1-.708-.708l1.414-1.414a.5.5 0 1 1 .708.708L12.536 4.172z"
+    />
+  </svg>
+
+  <span style="color: #888;">|</span>
+
+  <!-- Ay ikonu -->
+<svg
+  id="moonIcon"
+  xmlns="http://www.w3.org/2000/svg"
+  width="20"
+  height="20"
+  fill="currentColor"
+  viewBox="0 0 24 24"
+  style="display: inline-block;"
+>
+  <path d="M21.75 15.5a9.749 9.749 0 0 1-12.895 8.78 9.002 9.002 0 1 0 12.895-8.78z"/>
+</svg>
+
+    <path
+      d="M6 0a6 6 0 0 0 0 12 6 6 0 0 1 0-12z"
+    />
+  </svg>
+
+  <!-- İstersen daha fazla ikon da ekleyebilirsin... -->
+</button>
+
+
+
+
+  </header>
+
+  <main class="container">
+    <section
+      id="certificatesList"
+      aria-label="List of certificates"
+      tabindex="0"
+    >
+      <!-- JS ile sertifikalar buraya eklenecek -->
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Merve Altınışık </p>
+  </footer>
+
+  <script>
+    // Sertifikalar listesi (kolayca buradan güncellenebilir)
+    const certificates = [
+      {
+        title: "CODERSPACE School of Software and Technology",
+        issuer: "Github Project",
+        id: "Sertifika ID (8eb31b98-7bbc-4ed7-9754-47accf4099d4)",
+      },
+      {
+        title: "KODLUYORUZ AI4Change",
+        verificationLink:
+          "https://verified.sertifier.com/en/verify/87601381811435/?ref=email",
+      },
+      {
+        title: "KODLUYORUZ We Code with IBM: CyberStart",
+        verificationLink:
+          "https://verified.sertifier.com/tr/verify/72490240091370/",
+      },
+      {
+        title: "BOGAZICI UNIVERSITY INFORMATICS CLUB DataCamp Data Science Summit",
+        verificationLink:
+          "https://verified.sertifier.com/en/verify/65113835863091/",
+      },
+      {
+        title: "Artificial Intelligence Future & Its Impact on Information Security",
+        issuer: "PECB Regional Webinar",
+      },
+      {
+        title: "Introduction to Artificial Intelligence and Algorithms Training",
+        issuer: "SistersLab - Bilim ve Teknolojide Kadın Derneği",
+      },
+      {
+        title: "Women Writing the Future Artificial Intelligence Program",
+        issuer: "Writers of the Future Turkcell",
+      },
+      {
+        title: "Stacks Fullstack Bootcamp Turkey",
+        verificationLink: "https://www.risein.com/certificates/mEZZO_zp",
+      },
+      {
+        title: "IBM Interpersonal Skills",
+        id: "ILB-GYEQRZJQNMVJ32MB",
+      },
+      {
+        title: "IBM Explore Emerging Tech",
+        verificationLink:
+          "https://www.credly.com/badges/06eec175-b366-454d-b125-e4fcc29afb20/print",
+      },
+      {
+        title: "IBM Collaborate Effectively",
+        id: "ILB-GYEQRZJQNMVJ32MB",
+      },
+      {
+        title: "IBM Professional Skills",
+        id: "PLAN-C4FCC67D3E76",
+      },
+      {
+        title: "IBM Solving Problems with Critical and Creative Thinking",
+        id: "ILB-GYEQRZJQNMVJ32MB",
+      },
+      {
+        title: "IBM What is agile at IBM",
+        id: "ILB-KXWDJNXRZDNV2XAQ",
+      },
+      {
+        title: "IBM Working in a Digital World: Professional Skills",
+        verificationLink:
+          "https://www.credly.com/badges/1ec13d5b-525c-4752-8537-1dd8f82b607d/print",
+      },
+      {
+        title: "CODERSPACE Here is Artificial Intelligence_My Future Dream",
+        verificationLink:
+          "https://verified.sertifier.com/en/verify/55145216866869/?ref=email",
+      },
+      {
+        title: "IBM Agile Development Day",
+        id: "Sertifika ID (9095269b-58da-4630-8ab0-46a807fcc1ca)",
+      },
+      {
+        title: "CODERSPACE Software and Technology School",
+        id: "Sertifika ID (9d92ac06-3e7f-46de-89a1-2caac15b0c0e)",
+      },
+      {
+        title: "Youthall Tech Career Summit",
+        id: "47120071961983",
+      },
+      {
+        title: "KODLUYORUZ Gelecek Hayalim Projesi: W-Code",
+        verificationLink:
+          "https://verified.sertifier.com/en/verify/69560552044354/",
+      },
+      {
+        title: "Turkcell Academy Introduction to Data Science and Artificial Intelligence",
+      },
+      {
+        title: "Turkcell Academy Python Programming 101 - 201 - 301 - 401",
+      },
+      {
+        title: "Turkcell Academy Machine Learning 101",
+      },
+    ];
+
+    const container = document.getElementById("certificatesList");
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    certificates.forEach(({ title, issuer, id, verificationLink, date }) => {
+      const card = document.createElement("article");
+      card.className = "card";
+      card.tabIndex = 0; // erişilebilirlik için
+
+      // Başlık
+      const titleEl = document.createElement("h2");
+      titleEl.textContent = title;
+      card.appendChild(titleEl);
+
+      // Veren kuruluş (issuer)
+      if (issuer) {
+        const issuerEl = document.createElement("p");
+        issuerEl.className = "issuer";
+        issuerEl.textContent = issuer;
+        card.appendChild(issuerEl);
+      }
+
+      // Link veya ID
+      if (verificationLink) {
+        const linkEl = document.createElement("a");
+        linkEl.href = verificationLink;
+        linkEl.textContent = "Verification Link";
+        linkEl.target = "_blank";
+        linkEl.rel = "noopener noreferrer";
+        card.appendChild(linkEl);
+      } else if (id) {
+        const idEl = document.createElement("p");
+        idEl.className = "small-text";
+        idEl.textContent = id;
+        card.appendChild(idEl);
+      }
+
+      // Opsiyonel tarih
+      if (date) {
+        const dateEl = document.createElement("p");
+        dateEl.className = "small-text";
+        dateEl.textContent = date;
+        card.appendChild(dateEl);
+      }
+
+      container.appendChild(card);
+    });
+
+    // Koyu mod toggle
+const toggleBtn = document.getElementById('modeToggle');
+const sunIcon = document.getElementById('sunIcon');
+const moonIcon = document.getElementById('moonIcon');
+
+toggleBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  const isDark = document.body.classList.contains('dark-mode');
+
+  // İkonların görünürlüğünü tercihe göre ayarla, örneğin:
+  sunIcon.style.opacity = isDark ? '0.5' : '1';
+  moonIcon.style.opacity = isDark ? '1' : '0.5';
+});
+
+
+  </script>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+  ></script>
+</body>
+</html>
