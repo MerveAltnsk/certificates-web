@@ -9,390 +9,156 @@
 
   <!-- Bootstrap CSS -->
   <link
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-  rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
   />
 
   <!-- FontAwesome CSS -->
   <link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    rel="stylesheet"
   />
 
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+    rel="stylesheet"
+  />
 
-  
-
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
-
-    /* GENEL */
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-        Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      background-color: #faf9f6;
-      color: #2c2c2c;
-      transition: background-color 0.4s ease, color 0.4s ease;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    header, footer {
-      padding: 2rem 1rem;
-      flex-shrink: 0;
-      text-align: center;
-      user-select: none;
-    }
-
-    header {
-      border-bottom: 1px solid rgba(0,0,0,0.1);
-      background-color: transparent;
-    }
-
-    header h1 {
-      font-weight: 800;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      font-size: 2rem;
-      margin-bottom: 0.7rem;
-      color: #1a2a6c;
-    }
-
-    footer {
-      border-top: 1px solid rgba(0,0,0,0.1);
-      font-size: 0.9rem;
-      color: #666;
-      margin-top: auto;
-      background-color: transparent;
-    }
-
-
-  /* Toggle buton */
-input[type="checkbox"] {
-  width: 0;
-  height: 0;
-  visibility: hidden;
-}
-
-label {
-  width: 70px;     
-  height: 35px;     
-  position: fixed;
-  top: 20px;   /* Üstten mesafe */
-  right: 20px; /* Sağdan mesafe */  display: block;
-  background: #ebebeb;
-  border-radius: 50px;
-  box-shadow:
-    inset 0px 3px 8px rgba(0, 0, 0, 0.4),
-    inset 0px -3px 8px rgba(255, 255, 255, 0.4);
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-label:after {
-  content: "";
-  width: 25px;      
-  height: 25px;     
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  background: linear-gradient(180deg, #ffcc89, #d8860b);
-  border-radius: 50%;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
-  transition: left 0.3s ease, background 0.3s ease, transform 0.3s ease;
-}
-
-label svg {
-  position: absolute;
-  width: 14px;       /* İkon boyutu */
-  height: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 100;
-  transition: fill 0.3s ease;
-}
-
-label svg.sun {
-  left: 10px;      
-  fill: #fff;
-}
-
-label svg.moon {
-  right: 10px;      
-  fill: #7e7e7e;
-}
-
-input[type="checkbox"]:checked + label {
-  background: #242424;
-}
-
-input[type="checkbox"]:checked + label:after {
-  left: 40px;  /* Knob sağa kayma mesafesi */
-  background: linear-gradient(180deg, #777, #3a3a3a);
-}
-
-input[type="checkbox"]:checked + label svg.sun {
-  fill: #7e7e7e;
-}
-
-input[type="checkbox"]:checked + label svg.moon {
-  fill: #fff;
-}
-
-
-    /* MAIN CONTAINER */
-    main.container {
-      max-width: 900px;
-      flex-grow: 1;
-      padding: 2.5rem 1.5rem;
-    }
-
-    /* SERTIFIKA KARTLARI GRID */
-    #certificatesList {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 1.8rem 1.8rem;
-    }
-
-    /* KARTLAR */
-    .card {
-      padding: 1rem 1.5rem;
-      border-radius: 1rem;
-      background: rgba(255 255 255 / 0.9);
-      box-shadow: 0 8px 32px rgb(31 38 135 / 0.1);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255 255 255 / 0.3);
-      transition: box-shadow 0.3s ease, transform 0.25s ease;
-      color: #1b1b1b;
-      cursor: default;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      height: 160px;
-    }
-    .card:hover,
-    .card:focus-within {
-      box-shadow: 0 12px 48px rgb(31 38 135 / 0.18);
-      transform: translateY(-3px);
-      outline: none;
-    }
-
-    /* Kart başlığı */
-    .card h2 {
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-bottom: 0.25rem;
-      color: #0b1a58;
-      line-height: 1.3;
-      user-select: text;
-    }
-
-    /* Veren kuruluş */
-    .card p.issuer {
-      font-style: italic;
-      color: #666;
-      font-size: 0.88rem;
-      margin-bottom: 0.4rem;
-      user-select: text;
-    }
-
-    /* Genel paragraf */
-    .card p {
-      font-size: 0.9rem;
-      color: #555;
-      margin-bottom: 0.3rem;
-      user-select: text;
-      line-height: 1.2;
-    }
-
-    /* Link */
-    a {
-      color: #1a2a6c;
-      text-decoration: underline;
-      word-break: break-word;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: color 0.25s ease;
-      user-select: text;
-    }
-    a:hover,
-    a:focus {
-      color: #0a58ca;
-      text-decoration: none;
-      outline-offset: 3px;
-    }
-
-    /* Küçük yazılar */
-    .small-text {
-      font-size: 0.8rem;
-      color: #888;
-      user-select: text;
-    }
-
-
-
-
-
-    /* Toggle buton */
-
-
-
-
-
-
-    /* Koyu mod */
-    body.dark-mode {
-  background-color: #1e1e2f; 
-  color: #d0d0d0; 
-}
-
-body.dark-mode header h1 {
-  color: #f0f0f0; 
-}
-
-body.dark-mode footer {
-  color: #999999; 
-  border-top-color: rgba(255 255 255 / 0.12);
-}
-
-body.dark-mode header {
-  border-bottom-color: rgba(255 255 255 / 0.12);
-}
-
-body.dark-mode .card {
-  background: rgba(40 40 55 / 0.75); 
-  box-shadow: 0 8px 32px rgb(255 255 255 / 0.08);
-  border: 1px solid rgba(255 255 255 / 0.10);
-  color: #e0e0e0;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-body.dark-mode .card:hover,
-body.dark-mode .card:focus-within {
-      box-shadow: 0 12px 48px rgb(255 255 255 / 0.15);
-   transform: translateY(-3px);
-}
-
-body.dark-mode .card h2 {
-  position: relative;
-  color: #f5f5f5;
-  padding: 0.15rem 0.6rem;
-  border-radius: 0.5rem;
-  background: rgba(255 255 255 / 0.1);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
-
-body.dark-mode .card p,
-body.dark-mode .card p.issuer {
-  color: #bbb;
-}
-
-body.dark-mode a {
-  color: #82b1ff; 
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-body.dark-mode a:hover,
-body.dark-mode a:focus {
-  color: #a9c9ff;
-  text-decoration: underline;
-}
-
-body.dark-mode .toggle-btn {
-  color: #c0c0c0;
-  border-color: #666;
-  background-color: transparent;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 0.25);
-  transition: all 0.3s ease;
-}
-
-body.dark-mode .toggle-btn:hover,
-body.dark-mode .toggle-btn:focus {
-  color: #f0f0f0;
-  border-color: #82b1ff;
-  background-color: rgba(50 60 90 / 0.7);
-  box-shadow: 0 4px 14px rgb(130 177 255 / 0.7);
-}
-
-
-    /* Responsive */
-    @media (max-width: 767.98px) {
-      main.container {
-        max-width: 100%;
-        padding: 1.5rem 1rem;
-      }
-      #certificatesList {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-      .card {
-        height: auto;
-        padding: 1.3rem 1.5rem;
-      }
-    }
-
-    @media (max-width: 479.98px) {
-      header h1 {
-        font-size: 1.6rem;
-      }
-      .toggle-btn {
-        font-size: 0.9rem;
-        padding: 0.35rem 1.2rem;
-      }
-    }
-  </style>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <h1>CERTIFICATES</h1>
 
-
-<input type="checkbox" id="darkmode-toggle" />
-<label for="darkmode-toggle" aria-label="Toggle light and dark mode" title="Toggle light and dark mode">
-  <svg class="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 496" width="20" height="20">
-    <rect x="152.994" y="58.921" transform="matrix(0.3827 0.9239 -0.9239 0.3827 168.6176 -118.5145)" width="40.001" height="16" />
-    <rect x="46.9" y="164.979" transform="matrix(0.9239 0.3827 -0.3827 0.9239 71.29 -12.4346)" width="40.001" height="16" />
-    <rect x="46.947" y="315.048" transform="matrix(0.9239 -0.3827 0.3827 0.9239 -118.531 50.2116)" width="40.001" height="16" />
-    <rect x="164.966" y="409.112" transform="matrix(-0.9238 -0.3828 0.3828 -0.9238 168.4872 891.7491)" width="16" height="39.999" />
-    <rect x="303.031" y="421.036" transform="matrix(-0.3827 -0.9239 0.9239 -0.3827 50.2758 891.6655)" width="40.001" height="16" />
-    <rect x="409.088" y="315.018" transform="matrix(-0.9239 -0.3827 0.3827 -0.9239 701.898 785.6559)" width="40.001" height="16" />
-    <rect x="409.054" y="165.011" transform="matrix(-0.9239 0.3827 -0.3827 -0.9239 891.6585 168.6574)" width="40.001" height="16" />
-    <rect x="315.001" y="46.895" transform="matrix(0.9238 0.3828 -0.3828 0.9238 50.212 -118.5529)" width="16" height="39.999" />
-    <path d="M248,88c-88.224,0-160,71.776-160,160s71.776,160,160,160s160-71.776,160-160S336.224,88,248,88z M248,392
-        c-79.4,0-144-64.6-144-144s64.6-144,144-144s144,64.6,144,144S327.4,392,248,392z" />
-    <rect x="240" width="16" height="72" />
-    <rect x="62.097" y="90.096" transform="matrix(0.7071 0.7071 -0.7071 0.7071 98.0963 -40.6334)" width="71.999" height="16" />
-    <rect y="240" width="72" height="16" />
-    <rect x="90.091" y="361.915" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 -113.9157 748.643)" width="16" height="71.999" />
-    <rect x="240" y="424" width="16" height="72" />
-    <rect x="361.881" y="389.915" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 397.8562 960.6281)" width="71.999" height="16" />
-    <rect x="424" y="240" width="72" height="16" />
-    <rect x="389.911" y="62.091" transform="matrix(0.7071 0.7071 -0.7071 0.7071 185.9067 -252.6357)" width="16" height="71.999" />
-  </svg>
-  <svg class="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.739 49.739" width="20" height="20">
-    <path d="M25.068,48.889c-9.173,0-18.017-5.06-22.396-13.804C-3.373,23.008,1.164,8.467,13.003,1.979l2.061-1.129l-0.615,2.268
-    c-1.479,5.459-0.899,11.25,1.633,16.306c2.75,5.493,7.476,9.587,13.305,11.526c5.831,1.939,12.065,1.492,17.559-1.258v0
-    c0.25-0.125,0.492-0.258,0.734-0.391l2.061-1.13l-0.585,2.252c-1.863,6.873-6.577,12.639-12.933,15.822
-    C32.639,48.039,28.825,48.888,25.068,48.889z M12.002,4.936c-9.413,6.428-12.756,18.837-7.54,29.253
-    c5.678,11.34,19.522,15.945,30.864,10.268c5.154-2.582,9.136-7.012,11.181-12.357c-5.632,2.427-11.882,2.702-17.752,0.748
-    c-6.337-2.108-11.473-6.557-14.463-12.528C11.899,15.541,11.11,10.16,12.002,4.936z" />
-  </svg>
-</label>
-
-
+    <input type="checkbox" id="darkmode-toggle" />
+    <label
+      for="darkmode-toggle"
+      aria-label="Toggle light and dark mode"
+      title="Toggle light and dark mode"
+    >
+      <svg
+        class="sun"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 496 496"
+        width="20"
+        height="20"
+      >
+        <rect
+          x="152.994"
+          y="58.921"
+          transform="matrix(0.3827 0.9239 -0.9239 0.3827 168.6176 -118.5145)"
+          width="40.001"
+          height="16"
+        />
+        <rect
+          x="46.9"
+          y="164.979"
+          transform="matrix(0.9239 0.3827 -0.3827 0.9239 71.29 -12.4346)"
+          width="40.001"
+          height="16"
+        />
+        <rect
+          x="46.947"
+          y="315.048"
+          transform="matrix(0.9239 -0.3827 0.3827 0.9239 -118.531 50.2116)"
+          width="40.001"
+          height="16"
+        />
+        <rect
+          x="164.966"
+          y="409.112"
+          transform="matrix(-0.9238 -0.3828 0.3828 -0.9238 168.4872 891.7491)"
+          width="16"
+          height="39.999"
+        />
+        <rect
+          x="303.031"
+          y="421.036"
+          transform="matrix(-0.3827 -0.9239 0.9239 -0.3827 50.2758 891.6655)"
+          width="40.001"
+          height="16"
+        />
+        <rect
+          x="409.088"
+          y="315.018"
+          transform="matrix(-0.9239 -0.3827 0.3827 -0.9239 701.898 785.6559)"
+          width="40.001"
+          height="16"
+        />
+        <rect
+          x="409.054"
+          y="165.011"
+          transform="matrix(-0.9239 0.3827 -0.3827 -0.9239 891.6585 168.6574)"
+          width="40.001"
+          height="16"
+        />
+        <rect
+          x="315.001"
+          y="46.895"
+          transform="matrix(0.9238 0.3828 -0.3828 0.9238 50.212 -118.5529)"
+          width="16"
+          height="39.999"
+        />
+        <path
+          d="M248,88c-88.224,0-160,71.776-160,160s71.776,160,160,160s160-71.776,160-160S336.224,88,248,88z M248,392
+            c-79.4,0-144-64.6-144-144s64.6-144,144-144s144,64.6,144,144S327.4,392,248,392z"
+        />
+        <rect x="240" width="16" height="72" />
+        <rect
+          x="62.097"
+          y="90.096"
+          transform="matrix(0.7071 0.7071 -0.7071 0.7071 98.0963 -40.6334)"
+          width="71.999"
+          height="16"
+        />
+        <rect y="240" width="72" height="16" />
+        <rect
+          x="90.091"
+          y="361.915"
+          transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 -113.9157 748.643)"
+          width="16"
+          height="71.999"
+        />
+        <rect x="240" y="424" width="16" height="72" />
+        <rect
+          x="361.881"
+          y="389.915"
+          transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 397.8562 960.6281)"
+          width="71.999"
+          height="16"
+        />
+        <rect x="424" y="240" width="72" height="16" />
+        <rect
+          x="389.911"
+          y="62.091"
+          transform="matrix(0.7071 0.7071 -0.7071 0.7071 185.9067 -252.6357)"
+          width="16"
+          height="71.999"
+        />
+      </svg>
+      <svg
+        class="moon"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 49.739 49.739"
+        width="20"
+        height="20"
+      >
+        <path
+          d="M25.068,48.889c-9.173,0-18.017-5.06-22.396-13.804C-3.373,23.008,1.164,8.467,13.003,1.979l2.061-1.129l-0.615,2.268
+        c-1.479,5.459-0.899,11.25,1.633,16.306c2.75,5.493,7.476,9.587,13.305,11.526c5.831,1.939,12.065,1.492,17.559-1.258v0
+        c0.25-0.125,0.492-0.258,0.734-0.391l2.061-1.13l-0.585,2.252c-1.863,6.873-6.577,12.639-12.933,15.822
+        C32.639,48.039,28.825,48.888,25.068,48.889z M12.002,4.936c-9.413,6.428-12.756,18.837-7.54,29.253
+        c5.678,11.34,19.522,15.945,30.864,10.268c5.154-2.582,9.136-7.012,11.181-12.357c-5.632,2.427-11.882,2.702-17.752,0.748
+        c-6.337-2.108-11.473-6.557-14.463-12.528C11.899,15.541,11.11,10.16,12.002,4.936z"
+        />
+      </svg>
+    </label>
   </header>
 
   <main class="container">
-    <section
-      id="certificatesList"
-      aria-label="List of certificates"
-      tabindex="0"
-    >
+    <section id="certificatesList" aria-label="List of certificates" tabindex="0">
       <!-- JS ile sertifikalar buraya eklenecek -->
     </section>
   </main>
@@ -401,209 +167,8 @@ body.dark-mode .toggle-btn:focus {
     <p>© <span id="year"></span> Merve Altınışık </p>
   </footer>
 
-  <script>
-    const certificates = [
-      {
-        title: "AI4Change Program, conducted by Kodluyor Association and supported by the U.S Mission to Turkey",
-        issuer: "Kodluyoruz",
-        verificationLink:
-          "https://verified.sertifier.com/en/verify/87601381811435/?ref=email",
-      },
-      {
-        title: "EmpowerHER Program, conducted by Kodluyor Association and supported by British Embassy in Ankara",
-        issuer: "Kodluyoruz",
-        verificationLink:
-          "https://verified.sertifier.com/en/verify/20053167083181/",
-      },
-      {
-        title: "The Future of Artificial Intelligence and Its Impact on Information Security, presented by Atıl Samancıoğlu",
-        issuer: "PECB Regional Webinar",
-      },
-      {
-        title: "CODERSPACE School of Software and Technology",
-        issuer: "CODERSPACE",
-        verificationLink:
-          "https://coderspace.io/sertifikalar/e79a2345-33d5-4f10-9293-bcb6c7c778c4",
-      },
-            {
-        title: "Stacks Fullstack Bootcamp Turkey Sertifikası",
-        issuer: "Rise In ",
-        verificationLink:
-          "https://www.risein.com/certificates/mEZZO_zp",
-      },      {
-        title: "23 Artificial Intelligence Meetings",
-        issuer: "23",
-        verificationLink:
-          "https://yirmiuc.org/sertifikalar/8d056bf3-de6b-4599-8049-5a540b00f4ef/",
-      },
-                  {
-        title: "Data Science & AI Day 2024",
-        issuer: "CODERSPACE",
-        verificationLink:
-          "https://coderspace.io/sertifikalar/2b6adaa2-d628-432c-9369-ba4d0c37343a",
-      },  
-
-      {
-        title: "KODLUYORUZ AI4Change",
-        verificationLink:
-          "https://verified.sertifier.com/en/verify/87601381811435/?ref=email",
-      },
-      {
-        title: "KODLUYORUZ We Code with IBM: CyberStart",
-        verificationLink:
-          "https://verified.sertifier.com/tr/verify/72490240091370/",
-      },
-      {
-        title: "BOGAZICI UNIVERSITY INFORMATICS CLUB DataCamp Data Science Summit",
-        verificationLink:
-          "https://verified.sertifier.com/en/verify/65113835863091/",
-      },
-
-      {
-        title: "Introduction to Artificial Intelligence and Algorithms Training",
-        issuer: "SistersLab - Bilim ve Teknolojide Kadın Derneği",
-      },
-      {
-        title: "Women Writing the Future Artificial Intelligence Program",
-        issuer: "Writers of the Future Turkcell",
-      },
-      {
-        title: "Stacks Fullstack Bootcamp Turkey",
-        verificationLink: "https://www.risein.com/certificates/mEZZO_zp",
-      },
-      {
-        title: "IBM Interpersonal Skills",
-        id: "ILB-GYEQRZJQNMVJ32MB",
-      },
-      {
-        title: "IBM Explore Emerging Tech",
-        verificationLink:
-          "https://www.credly.com/badges/06eec175-b366-454d-b125-e4fcc29afb20/print",
-      },
-      {
-        title: "IBM Collaborate Effectively",
-        id: "ILB-GYEQRZJQNMVJ32MB",
-      },
-      {
-        title: "IBM Professional Skills",
-        id: "PLAN-C4FCC67D3E76",
-      },
-      {
-        title: "IBM Solving Problems with Critical and Creative Thinking",
-        id: "ILB-GYEQRZJQNMVJ32MB",
-      },
-      {
-        title: "IBM What is agile at IBM",
-        id: "ILB-KXWDJNXRZDNV2XAQ",
-      },
-      {
-        title: "IBM Working in a Digital World: Professional Skills",
-        verificationLink:
-          "https://www.credly.com/badges/1ec13d5b-525c-4752-8537-1dd8f82b607d/print",
-      },
-      {
-        title: "CODERSPACE Here is Artificial Intelligence_My Future Dream",
-        verificationLink:
-          "https://verified.sertifier.com/en/verify/55145216866869/?ref=email",
-      },
-      {
-        title: "IBM Agile Development Day",
-        id: "Sertifika ID (9095269b-58da-4630-8ab0-46a807fcc1ca)",
-      },
-      {
-        title: "CODERSPACE Software and Technology School",
-        id: "Sertifika ID (9d92ac06-3e7f-46de-89a1-2caac15b0c0e)",
-      },
-      {
-        title: "Youthall Tech Career Summit",
-        id: "47120071961983",
-      },
-      {
-        title: "KODLUYORUZ Gelecek Hayalim Projesi: W-Code",
-        verificationLink:
-          "https://verified.sertifier.com/en/verify/69560552044354/",
-      },
-      {
-        title: "Turkcell Academy Introduction to Data Science and Artificial Intelligence",
-      },
-      {
-        title: "Turkcell Academy Python Programming 101 - 201 - 301 - 401",
-      },
-      {
-        title: "Turkcell Academy Machine Learning 101",
-      },
-       {
-        title: "Turkcell Academy GNÇYTNK'25 Gelişim Rotası Programı",
-      },
-    ];
-
-    const container = document.getElementById("certificatesList");
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    certificates.forEach(({ title, issuer, id, verificationLink, date }) => {
-      const card = document.createElement("article");
-      card.className = "card";
-      card.tabIndex = 0; // erişilebilirlik için
-
-      // Başlık
-      const titleEl = document.createElement("h2");
-      titleEl.textContent = title;
-      card.appendChild(titleEl);
-
-      // Veren kuruluş (issuer)
-      if (issuer) {
-        const issuerEl = document.createElement("p");
-        issuerEl.className = "issuer";
-        issuerEl.textContent = issuer;
-        card.appendChild(issuerEl);
-      }
-
-      // Link veya ID
-      if (verificationLink) {
-        const linkEl = document.createElement("a");
-        linkEl.href = verificationLink;
-        linkEl.textContent = "Verification Link";
-        linkEl.target = "_blank";
-        linkEl.rel = "noopener noreferrer";
-        card.appendChild(linkEl);
-      } else if (id) {
-        const idEl = document.createElement("p");
-        idEl.className = "small-text";
-        idEl.textContent = id;
-        card.appendChild(idEl);
-      }
-
-      // Opsiyonel tarih
-      if (date) {
-        const dateEl = document.createElement("p");
-        dateEl.className = "small-text";
-        dateEl.textContent = date;
-        card.appendChild(dateEl);
-      }
-
-      container.appendChild(card);
-    });
-
-    // Koyu mod toggle
-    
-    /* Dark Mode Toggle Button
-       Reference:  https://redstapler.co/pure-css-minimal-dark-mode-toggle-button/
-       Adapted & modified by Merve Altınışık, 2025
-    */
-
-    const checkbox = document.getElementById('darkmode-toggle');
-       checkbox.addEventListener('change', () => {
-        if (checkbox.checked) {
-        document.body.classList.add('dark-mode');
-        } else {
-         document.body.classList.remove('dark-mode');
-        }
-    });
-
-
-
-  </script>
+  <!-- Custom JS -->
+  <script src="script.js"></script>
 
   <!-- Bootstrap 5 JS Bundle -->
   <script
