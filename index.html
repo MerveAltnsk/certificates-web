@@ -7,11 +7,20 @@
   <meta name="author" content="Merve Altınışık" />
   <title>Certificates Portfolio</title>
 
-  <!-- Bootstrap 5 CSS CDN -->
+  <!-- Bootstrap CSS -->
   <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  rel="stylesheet"
   />
+
+  <!-- FontAwesome CSS -->
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  rel="stylesheet"
+  />
+
+
+  
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
@@ -59,32 +68,79 @@
       background-color: transparent;
     }
 
-    /* Toggle buton */
-    .toggle-btn {
-      cursor: pointer;
-      user-select: none;
-      border-radius: 50px;
-      padding: 0.4rem 1.5rem;
-      font-weight: 600;
-      font-size: 1rem;
-      color: #555;
-      border: 1.8px solid #999;
-      background-color: transparent;
-      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-      margin: 0 auto;
-      display: inline-block;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-      user-select: none;
-      outline-offset: 3px;
-    }
-    .toggle-btn:hover,
-    .toggle-btn:focus {
-      color: #222;
-      border-color: #555;
-      background-color: #eee;
-      outline: none;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
-    }
+
+  /* Toggle buton */
+input[type="checkbox"] {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+label {
+  width: 70px;     
+  height: 35px;     
+  position: fixed;
+  top: 20px;   /* Üstten mesafe */
+  right: 20px; /* Sağdan mesafe */  display: block;
+  background: #ebebeb;
+  border-radius: 50px;
+  box-shadow:
+    inset 0px 3px 8px rgba(0, 0, 0, 0.4),
+    inset 0px -3px 8px rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+label:after {
+  content: "";
+  width: 25px;      
+  height: 25px;     
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: linear-gradient(180deg, #ffcc89, #d8860b);
+  border-radius: 50%;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+  transition: left 0.3s ease, background 0.3s ease, transform 0.3s ease;
+}
+
+label svg {
+  position: absolute;
+  width: 14px;       /* İkon boyutu */
+  height: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  transition: fill 0.3s ease;
+}
+
+label svg.sun {
+  left: 10px;      
+  fill: #fff;
+}
+
+label svg.moon {
+  right: 10px;      
+  fill: #7e7e7e;
+}
+
+input[type="checkbox"]:checked + label {
+  background: #242424;
+}
+
+input[type="checkbox"]:checked + label:after {
+  left: 40px;  /* Knob sağa kayma mesafesi */
+  background: linear-gradient(180deg, #777, #3a3a3a);
+}
+
+input[type="checkbox"]:checked + label svg.sun {
+  fill: #7e7e7e;
+}
+
+input[type="checkbox"]:checked + label svg.moon {
+  fill: #fff;
+}
+
 
     /* MAIN CONTAINER */
     main.container {
@@ -175,6 +231,17 @@
       color: #888;
       user-select: text;
     }
+
+
+
+
+
+    /* Toggle buton */
+
+
+
+
+
 
     /* Koyu mod */
     body.dark-mode {
@@ -283,65 +350,39 @@ body.dark-mode .toggle-btn:focus {
 <body>
   <header>
     <h1>CERTIFICATES</h1>
-<button
-  id="modeToggle"
-  class="toggle-btn"
-  aria-label="Toggle light and dark mode"
-  title="Toggle light and dark mode"
-  style="
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 16px;
-    overflow-x: auto;      /* Yatayda scroll */
-    white-space: nowrap;   /* İçerik tek satırda */
-    padding: 8px;
-    max-width: 150px;      /* Genişlik sınırı */
-    scrollbar-width: thin; /* Firefox için ince scrollbar */
-  "
->
-  <!-- Güneş ikonu -->
-  <svg
-    id="sunIcon"
-    xmlns="http://www.w3.org/2000/svg"
-    width="20"
-    height="20"
-    fill="currentColor"
-    viewBox="0 0 16 16"
-    style="display: inline-block;"
-  >
-    <path
-      d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"
-    />
-    <path
-      d="M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zM8 13.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2a.5.5 0 0 1 .5-.5zM3.354 2.646a.5.5 0 0 1 .708 0l1.414 1.414a.5.5 0 0 1-.708.708L3.354 3.354a.5.5 0 0 1 0-.708zM12.536 11.828a.5.5 0 0 1 .708 0l1.414 1.414a.5.5 0 0 1-.708.708l-1.414-1.414a.5.5 0 0 1 0-.708zM0 8a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 0 8zm13.5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zM3.354 13.354a.5.5 0 1 1-.708-.708l1.414-1.414a.5.5 0 1 1 .708.708l-1.414 1.414zM12.536 4.172a.5.5 0 0 1-.708-.708l1.414-1.414a.5.5 0 1 1 .708.708L12.536 4.172z"
-    />
+
+
+<input type="checkbox" id="darkmode-toggle" />
+<label for="darkmode-toggle" aria-label="Toggle light and dark mode" title="Toggle light and dark mode">
+  <svg class="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 496" width="20" height="20">
+    <rect x="152.994" y="58.921" transform="matrix(0.3827 0.9239 -0.9239 0.3827 168.6176 -118.5145)" width="40.001" height="16" />
+    <rect x="46.9" y="164.979" transform="matrix(0.9239 0.3827 -0.3827 0.9239 71.29 -12.4346)" width="40.001" height="16" />
+    <rect x="46.947" y="315.048" transform="matrix(0.9239 -0.3827 0.3827 0.9239 -118.531 50.2116)" width="40.001" height="16" />
+    <rect x="164.966" y="409.112" transform="matrix(-0.9238 -0.3828 0.3828 -0.9238 168.4872 891.7491)" width="16" height="39.999" />
+    <rect x="303.031" y="421.036" transform="matrix(-0.3827 -0.9239 0.9239 -0.3827 50.2758 891.6655)" width="40.001" height="16" />
+    <rect x="409.088" y="315.018" transform="matrix(-0.9239 -0.3827 0.3827 -0.9239 701.898 785.6559)" width="40.001" height="16" />
+    <rect x="409.054" y="165.011" transform="matrix(-0.9239 0.3827 -0.3827 -0.9239 891.6585 168.6574)" width="40.001" height="16" />
+    <rect x="315.001" y="46.895" transform="matrix(0.9238 0.3828 -0.3828 0.9238 50.212 -118.5529)" width="16" height="39.999" />
+    <path d="M248,88c-88.224,0-160,71.776-160,160s71.776,160,160,160s160-71.776,160-160S336.224,88,248,88z M248,392
+        c-79.4,0-144-64.6-144-144s64.6-144,144-144s144,64.6,144,144S327.4,392,248,392z" />
+    <rect x="240" width="16" height="72" />
+    <rect x="62.097" y="90.096" transform="matrix(0.7071 0.7071 -0.7071 0.7071 98.0963 -40.6334)" width="71.999" height="16" />
+    <rect y="240" width="72" height="16" />
+    <rect x="90.091" y="361.915" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 -113.9157 748.643)" width="16" height="71.999" />
+    <rect x="240" y="424" width="16" height="72" />
+    <rect x="361.881" y="389.915" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 397.8562 960.6281)" width="71.999" height="16" />
+    <rect x="424" y="240" width="72" height="16" />
+    <rect x="389.911" y="62.091" transform="matrix(0.7071 0.7071 -0.7071 0.7071 185.9067 -252.6357)" width="16" height="71.999" />
   </svg>
-
-  <span style="color: #888;">|</span>
-
-  <!-- Ay ikonu -->
-<svg
-  id="moonIcon"
-  xmlns="http://www.w3.org/2000/svg"
-  width="20"
-  height="20"
-  fill="currentColor"
-  viewBox="0 0 24 24"
-  style="display: inline-block;"
->
-  <path d="M21.75 15.5a9.749 9.749 0 0 1-12.895 8.78 9.002 9.002 0 1 0 12.895-8.78z"/>
-</svg>
-
-    <path
-      d="M6 0a6 6 0 0 0 0 12 6 6 0 0 1 0-12z"
-    />
+  <svg class="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.739 49.739" width="20" height="20">
+    <path d="M25.068,48.889c-9.173,0-18.017-5.06-22.396-13.804C-3.373,23.008,1.164,8.467,13.003,1.979l2.061-1.129l-0.615,2.268
+    c-1.479,5.459-0.899,11.25,1.633,16.306c2.75,5.493,7.476,9.587,13.305,11.526c5.831,1.939,12.065,1.492,17.559-1.258v0
+    c0.25-0.125,0.492-0.258,0.734-0.391l2.061-1.13l-0.585,2.252c-1.863,6.873-6.577,12.639-12.933,15.822
+    C32.639,48.039,28.825,48.888,25.068,48.889z M12.002,4.936c-9.413,6.428-12.756,18.837-7.54,29.253
+    c5.678,11.34,19.522,15.945,30.864,10.268c5.154-2.582,9.136-7.012,11.181-12.357c-5.632,2.427-11.882,2.702-17.752,0.748
+    c-6.337-2.108-11.473-6.557-14.463-12.528C11.899,15.541,11.11,10.16,12.002,4.936z" />
   </svg>
-
-  <!-- İstersen daha fazla ikon da ekleyebilirsin... -->
-</button>
-
-
+</label>
 
 
   </header>
@@ -361,13 +402,35 @@ body.dark-mode .toggle-btn:focus {
   </footer>
 
   <script>
-    // Sertifikalar listesi (kolayca buradan güncellenebilir)
     const certificates = [
       {
+        title: "CODERSPACE School of Software and Technology",
+        issuer: "CODERSPACE",
+        id: "Sertifika ID (8eb31b98-7bbc-4ed7-9754-47accf4099d4)",
+      },
+      {
+        title: "EmpowerHER Program, conducted by Kodluyor Association and supported by British Embassy in Ankara",
+        issuer: "Kodluyoruz",
+        verificationLink:
+          "https://verified.sertifier.com/en/verify/20053167083181/",
+      },
+            {
         title: "CODERSPACE School of Software and Technology",
         issuer: "Github Project",
         id: "Sertifika ID (8eb31b98-7bbc-4ed7-9754-47accf4099d4)",
       },
+            {
+        title: "CODERSPACE School of Software and Technology",
+        issuer: "Github Project",
+        id: "Sertifika ID (8eb31b98-7bbc-4ed7-9754-47accf4099d4)",
+      },      {
+        title: "CODERSPACE School of Software and Technology",
+        issuer: "Github Project",
+        id: "Sertifika ID (8eb31b98-7bbc-4ed7-9754-47accf4099d4)",
+      },
+
+
+
       {
         title: "KODLUYORUZ AI4Change",
         verificationLink:
@@ -460,6 +523,9 @@ body.dark-mode .toggle-btn:focus {
       {
         title: "Turkcell Academy Machine Learning 101",
       },
+       {
+        title: "Turkcell Academy GNÇYTNK'25 Gelişim Rotası Programı",
+      },
     ];
 
     const container = document.getElementById("certificatesList");
@@ -511,18 +577,21 @@ body.dark-mode .toggle-btn:focus {
     });
 
     // Koyu mod toggle
-const toggleBtn = document.getElementById('modeToggle');
-const sunIcon = document.getElementById('sunIcon');
-const moonIcon = document.getElementById('moonIcon');
+    
+    /* Dark Mode Toggle Button
+       Reference:  https://redstapler.co/pure-css-minimal-dark-mode-toggle-button/
+       Adapted & modified by Merve Altınışık, 2025
+    */
 
-toggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-  const isDark = document.body.classList.contains('dark-mode');
+    const checkbox = document.getElementById('darkmode-toggle');
+       checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+        document.body.classList.add('dark-mode');
+        } else {
+         document.body.classList.remove('dark-mode');
+        }
+    });
 
-  // İkonların görünürlüğünü tercihe göre ayarla, örneğin:
-  sunIcon.style.opacity = isDark ? '0.5' : '1';
-  moonIcon.style.opacity = isDark ? '1' : '0.5';
-});
 
 
   </script>
