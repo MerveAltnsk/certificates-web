@@ -17,6 +17,8 @@ const certificates = [
   {
     title: "The Future of Artificial Intelligence and Its Impact on Information Security, presented by Atıl Samancıoğlu",
     issuer: "PECB Regional Webinar",
+    verificationLink:
+      "https://www.linkedin.com/in/merve-alt%C4%B1n%C4%B1%C5%9F%C4%B1k/details/certifications/1733235480438/single-media-viewer/?profileId=ACoAACMVMZkBXIrL-vptiebr03X6XnXsoc77jfo",
   },
   {
     title: "CODERSPACE School of Software and Technology",
@@ -72,6 +74,7 @@ const certificates = [
   {
     title: "IBM Interpersonal Skills",
     id: "ILB-GYEQRZJQNMVJ32MB",
+    verificationLink: "https://www.linkedin.com/in/merve-alt%C4%B1n%C4%B1%C5%9F%C4%B1k/details/certifications/1718736633801/single-media-viewer/?profileId=ACoAACMVMZkBXIrL-vptiebr03X6XnXsoc77jfo"
   },
   {
     title: "IBM Explore Emerging Tech",
@@ -123,15 +126,23 @@ const certificates = [
   },
   {
     title: "Turkcell Academy Introduction to Data Science and Artificial Intelligence",
+    verificationLink:
+      "https://www.linkedin.com/in/merve-alt%C4%B1n%C4%B1%C5%9F%C4%B1k/details/certifications/1733658606976/single-media-viewer/?profileId=ACoAACMVMZkBXIrL-vptiebr03X6XnXsoc77jfo",
   },
   {
     title: "Turkcell Academy Python Programming 101 - 201 - 301 - 401",
+    verificationLink:
+      "https://www.linkedin.com/in/merve-alt%C4%B1n%C4%B1%C5%9F%C4%B1k/details/certifications/1733937729371/single-media-viewer/?profileId=ACoAACMVMZkBXIrL-vptiebr03X6XnXsoc77jfo",
   },
   {
     title: "Turkcell Academy Machine Learning 101",
+    verificationLink:
+      "https://www.linkedin.com/in/merve-alt%C4%B1n%C4%B1%C5%9F%C4%B1k/details/certifications/1734039049783/single-media-viewer/?profileId=ACoAACMVMZkBXIrL-v",
   },
   {
     title: "Turkcell Academy GNÇYTNK'25 Gelişim Rotası Programı",
+    verificationLink:
+      "https://www.linkedin.com/in/merve-alt%C4%B1n%C4%B1%C5%9F%C4%B1k/details/certifications/1754783961341/single-media-viewer/?profileId=ACoAACMVMZkBXIrL-vptiebr03X6XnXsoc77jfo",
   },
 ];
 
